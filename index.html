@@ -1,15 +1,242 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Galeria</title>
+    <title>Galeria One Piece</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 3em;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        h1::after {
+            content: "🏴‍☠️";
+            font-size: 1.2em;
+            margin-left: 15px;
+        }
+
+        h1::before {
+            content: "🏴‍☠️";
+            font-size: 1.2em;
+            margin-right: 15px;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: #ffd700;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 30px 15px 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Estilo para o título do personagem */
+        .character-title {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 215, 0, 0.9);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        /* Footer da galeria */
+        .gallery-footer {
+            margin-top: 40px;
+            color: white;
+            text-align: center;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .gallery-footer p {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Efeito de overlay ao passar o mouse */
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 215, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
-One Piece
+    <h1>Galeria One Piece</h1>
+    
+    <div class="gallery-container">
+        <div class="gallery">
+            <!-- Linha 1 - Coluna 1 -->
+            <div class="gallery-item">
+                <div class="character-title">Monkey D. Luffy</div>
+                <img src="https://via.placeholder.com/400x225/FF6B6B/FFFFFF?text=Monkey+D.+Luffy" alt="Monkey D. Luffy">
+                <div class="gallery-caption">O futuro Rei dos Piratas</div>
+            </div>
+            
+            <!-- Linha 1 - Coluna 2 -->
+            <div class="gallery-item">
+                <div class="character-title">Roronoa Zoro</div>
+                <img src="https://via.placeholder.com/400x225/4ECDC4/FFFFFF?text=Roronoa+Zoro" alt="Roronoa Zoro">
+                <div class="gallery-caption">O melhor espadachim</div>
+            </div>
+            
+            <!-- Linha 1 - Coluna 3 -->
+            <div class="gallery-item">
+                <div class="character-title">Nami</div>
+                <img src="https://via.placeholder.com/400x225/FFA07A/FFFFFF?text=Nami" alt="Nami">
+                <div class="gallery-caption">A navegadora do bando</div>
+            </div>
+            
+            <!-- Linha 2 - Coluna 1 -->
+            <div class="gallery-item">
+                <div class="character-title">Sanji</div>
+                <img src="https://via.placeholder.com/400x225/98D8C8/FFFFFF?text=Sanji" alt="Sanji">
+                <div class="gallery-caption">O cozinheiro dos Chapéus de Palha</div>
+            </div>
+            
+            <!-- Linha 2 - Coluna 2 -->
+            <div class="gallery-item">
+                <div class="character-title">Tony Tony Chopper</div>
+                <img src="https://via.placeholder.com/400x225/FFB6C1/FFFFFF?text=Tony+Tony+Chopper" alt="Tony Tony Chopper">
+                <div class="gallery-caption">O médico do bando</div>
+            </div>
+            
+            <!-- Linha 2 - Coluna 3 -->
+            <div class="gallery-item">
+                <div class="character-title">Nico Robin</div>
+                <img src="https://via.placeholder.com/400x225/9B59B6/FFFFFF?text=Nico+Robin" alt="Nico Robin">
+                <div class="gallery-caption">A arqueóloga dos Chapéus de Palha</div>
+            </div>
+        </div>
+    </div>
 
-<img src="https://ovicio.com.br/wp-content/uploads/2025/01/20250120-one-piece-episodio-original-ovicio.webp">
+    <div class="gallery-footer">
+        <p>⭐ Os Chapéus de Palha ⭐</p>
+    </div>
 
-
+    <script>
+        // Adiciona interatividade simples
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const character = this.querySelector('.character-title').textContent;
+                alert(`Você clicou em ${character}!`);
+            });
+        });
+    </script>
 </body>
 </html>
